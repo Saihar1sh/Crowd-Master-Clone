@@ -4,15 +4,39 @@ using UnityEngine;
 
 public class CrowdIncrementer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public CrowdIncrementOptions incrementOptions;
+    public int incrementValue;
+    private int incrementFinalVal;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.GetComponent<PlayerController>())
+        {
+            switch (incrementOptions)
+            {
+                case CrowdIncrementOptions.None:
+                    return;
+                case CrowdIncrementOptions.Add:
+                    incrementFinalVal = CrowdService.Instance.crowdControllers.Count + incrementValue;
+                    break;
+                case CrowdIncrementOptions.Multiply:
+                    if (incrementValue == 0)
+                    {
+                        incrementFinalVal = 1;
+                        return;
+                    }
+                    incrementFinalVal = CrowdService.Instance.crowdControllers.Count * incrementValue;
+                    break;
+                default:
+                    break;
+            }
+            CrowdService.Instance.CreateCrowd(incrementFinalVal);
+        }
     }
+}
+public enum CrowdIncrementOptions
+{
+    None,
+    Add,
+    Multiply
 }

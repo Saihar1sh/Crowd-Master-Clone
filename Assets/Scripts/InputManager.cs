@@ -6,7 +6,7 @@ public class InputManager : MonoSingletonGeneric<InputManager>
 {
     private Vector2 startTouch, swipeDelta;
 
-    private bool isDragging = false;
+    public bool isDragging { get; private set; } = false;
 
     public Vector2 SwipeDelta { get => swipeDelta; }
 
