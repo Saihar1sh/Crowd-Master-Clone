@@ -26,6 +26,11 @@ public class CrowdIncrementer : MonoBehaviour
                         incrementFinalVal = 1;
                         return;
                     }
+                    else if (CrowdService.Instance.crowdControllers.Count == 0)
+                    {
+                        incrementFinalVal = incrementValue;
+                        return;
+                    }
                     incrementFinalVal = CrowdService.Instance.crowdControllers.Count * incrementValue;
                     break;
                 default:

@@ -22,7 +22,7 @@ public class CrowdService : MonoSingletonGeneric<CrowdService>
     // Start is called before the first frame update
     void Start()
     {
-        CreateCrowd(20);
+        //CreateCrowd(20);
     }
 
     // Update is called once per frame
@@ -31,6 +31,7 @@ public class CrowdService : MonoSingletonGeneric<CrowdService>
         foreach (CrowdController item in crowdControllers)
         {
             item.transform.position = Vector3.ClampMagnitude(player.transform.position, radius);
+
         }
     }
 
@@ -55,6 +56,7 @@ public class CrowdService : MonoSingletonGeneric<CrowdService>
             obj.transform.localPosition = obj.offset = new Vector3(x, 0, y);
             //p += .2f;
         }
+
         /*        for (int i = 0; i < q; i++)
                 {
                     CrowdController crowdObj = 
