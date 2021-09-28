@@ -12,6 +12,7 @@ public class CrowdIncrementer : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            Debug.Log(incrementOptions);
             switch (incrementOptions)
             {
                 case CrowdIncrementOptions.None:

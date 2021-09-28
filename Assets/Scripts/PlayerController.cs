@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         if (InputManager.Instance.isDragging)
         {
-            Vector3 desiredPos = new Vector3(InputManager.Instance.SwipeDelta.normalized.x, 0, 0f) * -1 + transform.position;
+            Vector3 desiredPos = new Vector3(InputManager.Instance.SwipeDelta.normalized.x, 0, 1f) * -1 + transform.position;
             //playerRb.MovePosition(playerRb.position + desiredPos * mvtSpeed * Time.deltaTime);                //mvt using rb
             desiredPos.x = Mathf.Clamp(desiredPos.x, -4.5f, 4.5f);
             transform.position = Vector3.Lerp(transform.position, desiredPos, Time.deltaTime * mvtSpeed);     //mvt using lerp
